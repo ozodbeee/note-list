@@ -1,5 +1,6 @@
 import { SidebarItems } from '@/constants'
 import { cn } from '@/lib/utils'
+import { SignOutButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -7,8 +8,8 @@ function Sidebar() {
 	const pathname = usePathname()
 
 	return (
-		<div className='fixed z-40 pt-[11vh] border-r w-[300px] h-screen'>
-			<div className='container mx-auto'>
+		<div className='fixed z-40 pt-[11vh] border-r w-[300px] h-screen lg:block hidden'>
+			<div className='container mx-auto relative'>
 				{SidebarItems.map((item, index) => (
 					<Link
 						key={index}
@@ -22,6 +23,14 @@ function Sidebar() {
 						{item.label}
 					</Link>
 				))}
+
+				<div className='relative h-[70vh]'>
+					<SignOutButton>
+						<button className='w-full py-2 bg-red-600 font-SpaceGrotesk font-semibold rounded-md absolute bottom-0'>
+							Chiqish
+						</button>
+					</SignOutButton>
+				</div>
 			</div>
 		</div>
 	)

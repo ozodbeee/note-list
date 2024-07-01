@@ -9,6 +9,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog'
+import { PlusIcon } from 'lucide-react'
 import { useState } from 'react'
 
 function CreateNotes() {
@@ -21,9 +22,15 @@ function CreateNotes() {
 	return (
 		<Dialog open={isOpen} onOpenChange={handleOpenChange}>
 			<DialogTrigger>
-				<Button className='font-SpaceGrotesk'>Yangi qayd yarating</Button>
+				<Button className='font-SpaceGrotesk hidden md:block'>
+					Yangi qayd yarating
+				</Button>
+
+				<Button size={'icon'} className='font-SpaceGrotesk md:hidden'>
+					<PlusIcon />
+				</Button>
 			</DialogTrigger>
-			<DialogContent>
+			<DialogContent className='w-[360px] rounded-md md:w-full'>
 				<DialogHeader>
 					<DialogTitle className='font-SpaceGrotesk flex flex-col'>
 						<span className='text-xl'>Yangi eslatma</span>

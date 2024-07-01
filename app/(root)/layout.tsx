@@ -17,7 +17,7 @@ function Layout({ children }: ChildProps) {
 		<div>
 			<Navbar />
 			<Sidebar />
-			<main className='pt-[10vh] pl-[300px]'>{children}</main>
+			<main className='lg:pt-[10vh] lg:pl-[300px]'>{children}</main>
 		</div>
 	)
 }

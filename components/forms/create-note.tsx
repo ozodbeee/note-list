@@ -2,6 +2,7 @@
 
 import { createList } from '@/actions/list.action'
 import { ICreateList } from '@/actions/types'
+import { useUser } from '@clerk/nextjs'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
@@ -19,6 +20,8 @@ interface CreateNoteFormProps {
 
 function CreateNoteForm({ onClose }: CreateNoteFormProps) {
 	const [isLoading, setIsLoading] = useState(false)
+
+	const { user } = useUser()
 
 	const contactSchema = z.object({
 		title: z.string().min(3, {
@@ -39,7 +42,7 @@ function CreateNoteForm({ onClose }: CreateNoteFormProps) {
 
 	function onSubmit(values: z.infer<typeof contactSchema>) {
 		setIsLoading(true)
-		const promise = createList(values as ICreateList)
+		const promise = createList(values as ICreateList, user?.id as string)
 			.then(() => {
 				form.reset()
 				onClose()
@@ -104,7 +107,7 @@ function CreateNoteForm({ onClose }: CreateNoteFormProps) {
 							</span>
 						</div>
 					) : (
-						<span className='font-Montserrat font-bold'>Hozir saqlang</span>
+						<span className='font-Montserrat font-bold'>Hozir saqlash</span>
 					)}
 				</Button>
 			</form>

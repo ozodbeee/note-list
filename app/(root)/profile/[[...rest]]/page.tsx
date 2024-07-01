@@ -8,7 +8,7 @@ function Page() {
 	const { resolvedTheme } = useTheme()
 
 	return (
-		<div className='px-4 py-4'>
+		<div className='mx-4 my-4'>
 			<UserProfile
 				appearance={{
 					baseTheme: resolvedTheme === 'dark' ? dark : undefined,

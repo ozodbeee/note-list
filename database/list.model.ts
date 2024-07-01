@@ -5,6 +5,7 @@ const ListSchema = new Schema(
 		title: String,
 		description: String,
 		createdAt: String,
+		instructor: { type: Schema.Types.ObjectId, ref: 'User' },
 	},
 	{ timestamps: true }
 )
